@@ -5,7 +5,7 @@ module.exports = function (environment) {
     modulePrefix:    'ember-search-likes',
     podModulePrefix: 'ember-search-likes/pods',
     environment:     environment,
-    rootURL:         process.env.ESL_GH_PAGES ? '/ember-search-likes/' : '/',
+    rootURL:         process.env.ESL_GH_PAGES ? '../ember-search-likes/' : '/',
     locationType:    'auto',
     EmberENV: {
       FEATURES: {
