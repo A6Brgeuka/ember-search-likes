@@ -3,7 +3,7 @@ import {assign} from 'ember-platform'
 import Application from '../../app'
 import config from '../../config/environment'
 
-export default function startApp(attrs) {
+export default function startApp (attrs) {
   let application
 
   let attributes = assign({}, config.APP)
