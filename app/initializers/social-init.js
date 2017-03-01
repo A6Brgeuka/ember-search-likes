@@ -4,7 +4,7 @@ export function initialize (/* application */) {
       apiId: 5480399
     })
   } else {
-    throw new Error("VK is not defined")
+    throw new Error('VK is not defined')
   }
 }
 
