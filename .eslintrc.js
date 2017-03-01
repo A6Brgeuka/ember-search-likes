@@ -31,5 +31,9 @@ module.exports = {
     "no-template-curly-in-string": "off",
     "no-whitespace-before-property": "off",
     "no-useless-escape": "off"
+  },
+
+  globals: {
+    "VK": false
   }
 };
