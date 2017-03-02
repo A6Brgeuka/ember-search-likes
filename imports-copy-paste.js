@@ -1,5 +1,5 @@
 /* eslint-disable */
-/*
+
 // ----- Large parts -----
 import Application from 'ember-application'
 
@@ -75,4 +75,4 @@ import _ from 'npm:lodash'
 import $ from 'jquery'
 import RSVP from 'rsvp'
 import {task} from 'ember-concurrency'
-*/
+

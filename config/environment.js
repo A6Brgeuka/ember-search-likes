@@ -2,11 +2,11 @@
 
 module.exports = function (environment) {
   var ENV = {
-    modulePrefix: 'ember-search-likes',
+    modulePrefix:    'ember-search-likes',
     podModulePrefix: 'ember-search-likes/pods',
-    environment: environment,
-    rootURL: process.env.ESL_GH_PAGES ? '../ember-search-likes/' : '/',
-    locationType: 'auto',
+    environment:     environment,
+    rootURL:         process.env.ESL_GH_PAGES ? '../ember-search-likes/' : '/',
+    locationType:    'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
