@@ -6,7 +6,7 @@ module.exports = function (environment) {
     podModulePrefix: 'ember-search-likes/pods',
     environment:     environment,
     rootURL:         process.env.ESL_GH_PAGES ? '/ember-search-likes/' : '/',
-    locationType:    'hash',
+    locationType:    'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -18,10 +18,28 @@ module.exports = function (environment) {
       }
     },
 
+    SystemENV: process.env,
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    'auth-routes': {
+      authenticationRoute:         'hello',
+      routeAfterAuthentication:    'authenticated.friends',
+      routeIfAlreadyAuthenticated: 'authenticated.friends',
+    },
+
+    'vk-settings': {
+      appId:   process.env.FACEBOOK_APP_ID      || '5480399',
+      version: process.env.FACEBOOK_API_VERSION || '5.62',
+      scope:   process.env.FACEBOOK_SCOPE       || '+2'
     }
+    /*
+    * +2 -> friends
+    *
+    * */
   }
 
   if (environment === 'development') {

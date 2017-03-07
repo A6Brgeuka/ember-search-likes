@@ -1,6 +1,6 @@
 import {moduleFor, test} from 'ember-qunit'
 
-moduleFor('service:config', 'Unit | Service | config', {
+moduleFor('service:vk-service', 'Unit | Service | vk service', {
   // Specify the other units that are required for this test.
   // needs: ['service:foo']
 })
