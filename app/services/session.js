@@ -1,13 +1,14 @@
 import Service from 'ember-service'
 import computed, {reads} from 'ember-computed'
 import _ from 'npm:lodash'
+import service from 'ember-service/inject'
 
 
 
 export default Service.extend({
 
   // ----- Services -----
-
+  localStorage: service(),
 
 
   // ----- Overridden properties -----
@@ -19,13 +20,18 @@ export default Service.extend({
 
   // ----- Computed properties -----
   isAuthenticated: computed('data', function () {
-    debugger
-    return !_.isEmpty(this.get('data'))
+    return !_.isEmpty(this.get('localStorage').restore())
   }),
 
-  data: {},
 
-  user: reads('data.user')
+  data: computed({
+    set (key, value) {
+
+    },
+    get () {
+
+    }
+  })
 
 
   // ----- Overridden Methods -----
