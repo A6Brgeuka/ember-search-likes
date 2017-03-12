@@ -1,12 +1,12 @@
 import {moduleFor, test} from 'ember-qunit'
 
-moduleFor('service:local-storage', 'Unit | Service | local storage', {
+moduleFor('controller:hello', 'Unit | Controller | hello', {
   // Specify the other units that are required for this test.
-  // needs: ['service:foo']
+  // needs: ['controller:foo']
 })
 
 // Replace this with your real tests.
 test('it exists', function (assert) {
-  let service = this.subject()
-  assert.ok(service)
+  let controller = this.subject()
+  assert.ok(controller)
 })

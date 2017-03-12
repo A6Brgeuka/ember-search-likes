@@ -1,13 +1,12 @@
 import Route from 'ember-route'
-import UnauthenticatedRouteMixin from 'ember-search-likes/mixins/unauthenticated-route-mixin'
-import service from 'ember-service/inject'
+import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin'
 
 
 
 export default Route.extend(UnauthenticatedRouteMixin, {
 
   // ----- Services -----
-  vkService: service(),
+
 
 
   // ----- Overridden properties -----
@@ -49,12 +48,6 @@ export default Route.extend(UnauthenticatedRouteMixin, {
 
 
   // ----- Actions -----
-  actions: {
-    login () {
-      this.get('vkService')
-        .authenticate()
-        .then(() => this.transitionTo('authenticated.friends'))
-        .catch(err => this.set('errorMessage', err))
-    }
-  }
+  // actions: {
+  // }
 })

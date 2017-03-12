@@ -1,3 +1,4 @@
-import {ActiveModelSerializer} from 'active-model-adapter';
+import JSONAPISerializer from 'ember-data/serializers/json-api'
 
-export default ActiveModelSerializer.extend();
+export default JSONAPISerializer.extend({
+})

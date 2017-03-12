@@ -25,10 +25,10 @@ module.exports = function (environment) {
       // when it is created
     },
 
-    'auth-routes': {
+    'ember-simple-auth': {
       authenticationRoute:         'hello',
-      routeAfterAuthentication:    'authenticated.friends',
-      routeIfAlreadyAuthenticated: 'authenticated.friends',
+      routeAfterAuthentication:    'authenticated',
+      routeIfAlreadyAuthenticated: 'authenticated',
     },
 
     'vk-settings': {

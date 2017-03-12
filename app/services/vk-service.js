@@ -27,7 +27,12 @@ export default Service.extend({
 
 
   // ----- Computed properties -----
-
+  VK: computed(function () {
+    if (!VK) {
+      throw new Error('VK is not defined')
+    }
+    return VK
+  }),
 
 
   // ----- Overridden Methods -----
@@ -35,25 +40,43 @@ export default Service.extend({
 
 
   // ----- Custom Methods -----
-  authenticate () {
+  login () {
     return new RSVP.Promise((resolve, reject) => {
-      VK.Auth.login(({session, status}) => {
+      this.get('VK').Auth.login(({session, status}) => {
         if (_.isEmpty(session)) {
           return reject('something went wrong')
         }
-        const store = this.get('store');
-        store.pushPayload('user', {
-          user: session.user
-        })
-        this.get('session').setProperties({data: session})
-        return resolve(this.get('authStatuses')[status])
+        return resolve(session)
       })
+    })
+  },
+
+  getSession () {
+    return new RSVP.Promise((resolve, reject) => {
+      this.get('VK').Auth.getLoginStatus(({session, status}) => {
+        if (_.isEmpty(session)) {
+          return reject('something went wrong')
+        }
+        return resolve(session)
+      })
+    })
+  },
+
+  getUser (userIds) {
+    return new RSVP.Promise((resolve, reject) => {
+      this.get('VK').Api.call(
+        'users.get',
+        {
+          user_ids: userIds.join(',')
+        },
+        res => resolve(res.response)
+      )
     })
   },
 
   getFriends () {
     return new RSVP.Promise((resolve) => {
-      VK.Api.call(
+      this.get('VK').Api.call(
         'friends.get',
         {
           user_id:   this.get('session.user.id'),
