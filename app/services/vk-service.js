@@ -3,6 +3,8 @@ import service from 'ember-service/inject'
 import RSVP    from 'rsvp'
 import _       from 'npm:lodash'
 import computed from 'ember-computed'
+import config   from 'ember-search-likes/config/environment'
+
 
 
 
@@ -47,7 +49,7 @@ export default Service.extend({
           return reject('something went wrong')
         }
         return resolve(session)
-      })
+      }, config['vk-settings'].scope)
     })
   },
 
@@ -61,6 +63,15 @@ export default Service.extend({
       })
     })
   },
+
+  // getProfileInfo () {
+  //   debugger
+  //   return new RSVP.Promise((resolve, reject) => {
+  //     this.get('VK').Api.call('account.getProfileInfo', {}, res => {
+  //       debugger
+  //     })
+  //   })
+  // },
 
   getUser (userIds) {
     return new RSVP.Promise((resolve, reject) => {
@@ -85,7 +96,7 @@ export default Service.extend({
           name_case: 'nom'
         },
         response => {
-          debugger
+          resolve(response.response)
         }
       )
     })

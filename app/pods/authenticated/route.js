@@ -31,17 +31,24 @@ export default Route.extend(AuthenticatedRouteMixin, {
       .hash({
         currentUser: this._fetchUserOrLogout(transition)
       })
+      // .then(a => {
+      //   debugger
+      // })
 
-      .then(model => RSVP.hash({
-        ...model,
+      // .then(model => RSVP.hash({
+      //   ...model,
 
-        friends: store.findAll('friend')
-      }))
+        // friends: store.findFriends('user')
+      // }))
 
-      .then(model => {
-        if (!model.friends.get('length')) throw new Error('no_friends')
-        return model
-      })
+      // .then(model => {
+      //   if (!model.friends.get('length')) throw new Error('no_friends')
+      //   return model
+      // })
+  },
+
+  beforeModel () {
+    this.transitionTo('authenticated.friends')
   },
 
 
@@ -49,7 +56,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
   // ----- Custom Methods -----
   _fetchUserOrLogout (transition) {
     const userId = this.get('session.data.authenticated.user.id')
-    debugger
 
     if (!userId) {
       transition.abort()
@@ -59,24 +65,24 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     return this
       .get('store')
-      .findRecord('user', userId)
-
-      .catch(e => {
-
-        // Logout if user isn't found or doesn't match the one stored in session
-        if (
-          e.errors
-          && e.errors[0]
-          && _.includes(['404', 404], e.errors[0].status)
-        ) {
-          transition.abort()
-          this.get('session').invalidate() // can't use this.send('logout') here
-          return
-        }
-
-        // On any other error, propagate the error
-        throw e
-      })
+      .adapterFor('user')
+      .getCurrentUser()
+      // .catch(e => {
+      //
+      //   // Logout if user isn't found or doesn't match the one stored in session
+      //   if (
+      //     e.errors
+      //     && e.errors[0]
+      //     && _.includes(['404', 404], e.errors[0].status)
+      //   ) {
+      //     transition.abort()
+      //     // this.get('session').invalidate() // can't use this.send('logout') here
+      //     return
+      //   }
+      //
+      //   // On any other error, propagate the error
+      //   throw e
+      // })
   },
 
 

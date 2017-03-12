@@ -1,17 +1,19 @@
-// import Model from 'ember-data/model'
-// import attr       from 'ember-data/attr'
-import {hasMany, belongsTo}  from 'ember-data/relationships'
-import baseUserModel from './base-user'
+import Model from 'ember-data/model'
+import attr       from 'ember-data/attr'
 
-
-export default baseUserModel.extend({
+export default Model.extend({
 
   // ----- Attributes -----
+  domain:    attr('string'),
+  firstName: attr('string'),
+  lastName:  attr('string'),
+  href:      attr('string'),
+  nickName:  attr('string'),
 
 
 
   // ----- Relationships -----
-  friends: hasMany  ('friend', {async: false, inverse: null}),
+
 
 
   // ----- Overridden properties -----

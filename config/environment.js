@@ -34,7 +34,7 @@ module.exports = function (environment) {
     'vk-settings': {
       appId:   process.env.FACEBOOK_APP_ID      || '5480399',
       version: process.env.FACEBOOK_API_VERSION || '5.62',
-      scope:   process.env.FACEBOOK_SCOPE       || '+2'
+      scope:   process.env.FACEBOOK_SCOPE       || +2
     }
     /*
     * +2 -> friends
