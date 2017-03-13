@@ -85,18 +85,14 @@ export default Service.extend({
     })
   },
 
-  getFriends () {
+  getFriends (params) {
     return new RSVP.Promise((resolve) => {
       this.get('VK').Api.call(
         'friends.get',
-        {
-          user_id:   this.get('session.user.id'),
-          order:     'random',
-          fields:    'city,domain,last_seen,online',
-          name_case: 'nom'
-        },
-        response => {
-          resolve(response.response)
+        params,
+        res => {
+          debugger
+          resolve(res.response)
         }
       )
     })

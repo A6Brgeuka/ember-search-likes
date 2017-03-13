@@ -1,5 +1,6 @@
 import ApplicationAdapter from './application'
-import service    from 'ember-service/inject'
+import service from 'ember-service/inject'
+// import RSVP    from 'rsvp'
 
 
 
@@ -33,16 +34,29 @@ export default ApplicationAdapter.extend({
 
 
   // ----- Custom Methods -----
-  getCurrentUser () {
-    const store = this.get('store')
-    const user  = this.get('session.data.authenticated.user')
-    const modelClass = store.modelFor('user')
-    const serializer = store.serializerFor('user')
-    return serializer.normalizeSingleResponse(store, modelClass, user, user.id)
+  getCurrentUser (userId) {
+    return this.get('vkService')
+      .getUser([userId])
+      .then(([user]) => {
+        const store = this.get('store')
+        const modelClass = store.modelFor('user')
+        const serializer = store.serializerFor('user')
+        const normalized = serializer.normalize(modelClass, user, user.uid, 'findRecord')
+        return store.push(normalized)
+      })
   },
 
-  findFriends () {
-    debugger
+  getFriends (params) {
+    return this.get('vkService')
+      .getFriends(params)
+      .then(friends => {
+        debugger
+        const store = this.get('store')
+        const modelClass = store.modelFor('friend')
+        const serializer = store.serializerFor('friend')
+        const normalized = serializer.normalizeResponse(store, modelClass, friends, null, 'findAll')
+        return store.push(normalized)
+      })
   }
 
   // ----- Events and observers -----
