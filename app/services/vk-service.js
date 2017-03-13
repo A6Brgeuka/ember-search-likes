@@ -13,6 +13,8 @@ export default Service.extend({
   // ----- Services -----
   session: service(),
   store:   service(),
+  config:  service(),
+  ajax:    service(),
 
   // ----- Overridden properties -----
 
@@ -43,14 +45,18 @@ export default Service.extend({
 
   // ----- Custom Methods -----
   login () {
-    return new RSVP.Promise((resolve, reject) => {
-      this.get('VK').Auth.login(({session, status}) => {
-        if (_.isEmpty(session)) {
-          return reject('something went wrong')
-        }
-        return resolve(session)
-      }, config['vk-settings'].scope)
-    })
+    const authUrl = this.get('config.vkApiAuthUrl')
+    return this.get('ajax').request(authUrl)
+      .then( r => {debugger})
+    // return new RSVP.Promise((resolve, reject) => {
+
+    //   this.get('VK').Auth.login(({session, status}) => {
+    //     if (_.isEmpty(session)) {
+    //       return reject('something went wrong')
+    //     }
+    //     return resolve(session)
+    //   }, config['vk-settings'].scope)
+    // })
   },
 
   getSession () {
@@ -73,15 +79,19 @@ export default Service.extend({
   //   })
   // },
 
-  getUser (userIds) {
+  getUsers (userIds) {
     return new RSVP.Promise((resolve, reject) => {
-      this.get('VK').Api.call(
-        'users.get',
-        {
-          user_ids: userIds.join(',')
-        },
-        res => resolve(res.response)
-      )
+
+      // this.get('VK').Api.call(
+      //   'users.get',
+      //   {
+      //     user_ids: userIds.join(',')
+      //   },
+      //   res => {
+      //     debugger
+      //     resolve(res.response)
+      //   }
+      // )
     })
   },
 

@@ -36,7 +36,7 @@ export default ApplicationAdapter.extend({
   // ----- Custom Methods -----
   getCurrentUser (userId) {
     return this.get('vkService')
-      .getUser([userId])
+      .getUsers([userId])
       .then(([user]) => {
         const store = this.get('store')
         const modelClass = store.modelFor('user')

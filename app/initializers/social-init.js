@@ -1,9 +1,9 @@
-import config from 'ember-search-likes/config/environment'
+import Environment from 'ember-search-likes/config/environment'
 
 export function initialize (/* application */) {
   if (VK) {
     VK.init({
-      apiId: config['vk-settings']['appId']
+      apiId: Environment['vk-settings']['appId']
     })
   } else {
     throw new Error('VK is not defined')
