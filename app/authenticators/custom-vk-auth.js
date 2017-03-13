@@ -1,20 +1,18 @@
-import Base    from 'ember-simple-auth/authenticators/base'
-import service from 'ember-service/inject'
-
+import Base from 'ember-simple-auth/authenticators/base'
+import RSVP from 'rsvp'
 
 
 export default Base.extend({
 
   // ----- Services -----
-  vkService: service(),
 
 
   // ----- Overridden Methods -----
-  restore (/*data*/) {
-    return this.get('vkService').getSession()
+  restore (data) {
+    return RSVP.resolve(data)
   },
 
-  authenticate (/*args*/) {
-    return this.get('vkService').login()
+  authenticate (args) {
+    return RSVP.resolve(args)
   },
-});
+})

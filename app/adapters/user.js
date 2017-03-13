@@ -34,14 +34,14 @@ export default ApplicationAdapter.extend({
 
 
   // ----- Custom Methods -----
-  getCurrentUser (userId) {
+  getCurrentUser (params) {
     return this.get('vkService')
-      .getUsers([userId])
-      .then(([user]) => {
+      .getUsers (params)
+      .then(({response: [user]}) => {
         const store = this.get('store')
         const modelClass = store.modelFor('user')
         const serializer = store.serializerFor('user')
-        const normalized = serializer.normalize(modelClass, user, user.uid, 'findRecord')
+        const normalized = serializer.normalize(modelClass, user, user.id, 'findRecord')
         return store.push(normalized)
       })
   },
@@ -49,12 +49,11 @@ export default ApplicationAdapter.extend({
   getFriends (params) {
     return this.get('vkService')
       .getFriends(params)
-      .then(friends => {
-        debugger
+      .then(({response: {count, items}}) => {
         const store = this.get('store')
-        const modelClass = store.modelFor('friend')
-        const serializer = store.serializerFor('friend')
-        const normalized = serializer.normalizeResponse(store, modelClass, friends, null, 'findAll')
+        const modelClass = store.modelFor('user')
+        const serializer = store.serializerFor('user')
+        const normalized = serializer.normalizeResponse(store, modelClass, items, null, 'findAll')
         return store.push(normalized)
       })
   }

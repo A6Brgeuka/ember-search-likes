@@ -32,7 +32,7 @@ module.exports = function (environment) {
     },
 
     'vk-settings': {
-      appId:   process.env.VK_APP_ID      || 5480399,
+      appId:   process.env.VK_APP_ID      || 5922511,
       version: process.env.VK_API_VERSION || 5.62,
       scope:   process.env.VK_SCOPE       || 'friends'
     }

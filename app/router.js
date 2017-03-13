@@ -10,7 +10,7 @@ const router = Router.extend({
 router.map(function () {
   this.route('hello')
 
-  this.route('authenticated', {path: '/'}, function() {
+  this.route('authenticated', {path: '/'}, function () {
     this.route('friends')
   })
 })

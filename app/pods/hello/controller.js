@@ -1,14 +1,15 @@
 import Controller from 'ember-controller'
-import {task} from 'ember-concurrency'
 import service    from 'ember-service/inject'
+import templateString from 'ember-computed-template-string'
+
 
 
 
 export default Controller.extend({
 
   // ----- Services -----
-  session: service(),
-
+  config:    service(),
+  vkAuthUrl: templateString('${config.vkAuthUrl}')
 
 
   // ----- Overridden properties -----
@@ -36,19 +37,7 @@ export default Controller.extend({
 
 
   // ----- Tasks -----
-  attemptAuthTask:
-    task(
-      function * () {
-        try {
-          yield this
-            .get('session')
-            .authenticate('authenticator:custom-vk-auth')
-        } catch (e) {
-          const errors = e && e.errors || e && [JSON.stringify(e, null, 2)] || ["Unknown error"]
-          this.set('errorsRaw', errors)
-        }
-      }
-    ).drop(),
+
 
 
   // ----- Actions -----

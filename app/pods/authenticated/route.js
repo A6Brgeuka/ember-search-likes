@@ -26,7 +26,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   // ----- Overridden Methods -----
   model (params, transition) {
-    debugger
     const store = this.get('store')
 
     return RSVP
@@ -41,28 +40,23 @@ export default Route.extend(AuthenticatedRouteMixin, {
           .adapterFor('user')
           .getFriends({
             userId:    model.currentUser.get('id'),
-            fields:    'domain,online,last_seen,photo_50,photo_100,photo_200',
+            fields:    'sex,domain,online,last_seen,photo_50,photo_100,photo_200,first_name_acc',
             name_case: 'nom',
             order:     'random'
           })
       }))
 
       .then(model => {
-        debugger
         if (!model.friends.get('length')) throw new Error('no_friends')
         return model
       })
   },
 
-  // beforeModel () {
-  //   this.transitionTo('authenticated.friends')
-  // },
-
 
 
   // ----- Custom Methods -----
   _fetchUserOrLogout (transition) {
-    const userId = this.get('session.data.authenticated.mid')
+    const userId = this.get('session.data.authenticated.user_id')
 
     if (!userId) {
       transition.abort()
@@ -73,7 +67,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return this
       .get('store')
       .adapterFor('user')
-      .getCurrentUser()
+      .getCurrentUser({
+        user_id: userId,
+        fields:  'domain,sex'
+      })
       .catch(e => {
 
         // Logout if user isn't found or doesn't match the one stored in session

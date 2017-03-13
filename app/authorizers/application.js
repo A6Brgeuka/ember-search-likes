@@ -1,3 +1,3 @@
-import Base from 'ember-simple-auth/authorizers/base';
+import Base from 'ember-simple-auth/authorizers/base'
 
-export default Base.extend({});
+export default Base.extend({})
