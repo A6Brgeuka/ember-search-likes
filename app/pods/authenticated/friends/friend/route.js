@@ -1,4 +1,5 @@
 import Route from 'ember-route'
+import RSVP from 'rsvp'
 
 
 
@@ -21,16 +22,16 @@ export default Route.extend({
 
 
   // ----- Overridden Methods -----
-  // model() {
-  //   /* jshint unused:false */
-  //   const parentModel = this.modelFor('')
-  //
-  //   return RSVP.hash({
-  //     /* jshint ignore:start */
-  //     ...parentModel,
-  //     /* jshint ignore:end */
-  //   })
-  // },
+  model ({user_id}) {
+    const parentModel = this.modelFor('authenticated.friends')
+
+    const selectedUser = parentModel.friends.findBy('id', user_id)
+
+    return RSVP.hash({
+      ...parentModel,
+      selectedUser
+    })
+  },
 
 
 

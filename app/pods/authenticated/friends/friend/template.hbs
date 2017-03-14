@@ -1,1 +1,22 @@
+{{#sec-tion}}
+  <div class="page-auth-friends-friend-section _profileCover">
+    <div class="page-auth-friends-friend-section-profileCover _image">
+      <img src="{{model.selectedUser.photo_200}}" alt="">
+    </div>
+
+    <div class="page-auth-friends-friend-section-profileCover _info">
+      {{model.selectedUser.firstName}} {{model.selectedUser.lastName}}
+    </div>
+  </div>
+
+  <button {{action 'findLikes'}}>
+    Найти кого лайкает {{model.selectedUser.firstName}}
+  </button>
+
+  <button {{action 'findComments'}}>
+    Найти комменты к фоткам друзей
+  </button>
+
+{{/sec-tion}}
+
 {{outlet}}

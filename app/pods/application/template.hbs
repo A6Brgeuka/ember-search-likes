@@ -2,16 +2,15 @@
   {{log session.isAuthenticated 'session.isAuthenticated'}}
   {{#if session.isAuthenticated}}
 
-  {{/if}}
+  <div style="text-align: center">
+    @logo@ Ember search likes
+  </div>
   <div class="navigation">
-    <div>
-      @logo@ Ember search likes
-    </div>
-
     <div>
       {{link-to "Список друзей" "authenticated.friends"}}
     </div>
   </div>
+  {{/if}}
 
 {{/sec-tion}}
 {{outlet}}

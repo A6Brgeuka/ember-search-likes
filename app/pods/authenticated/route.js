@@ -40,7 +40,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
           .adapterFor('user')
           .getFriends({
             userId:    model.currentUser.get('id'),
-            fields:    'sex,domain,online,last_seen,photo_50,photo_100,photo_200,first_name_acc',
+            fields:    'sex,domain,online,last_seen,photo_50,photo_100,photo_200,first_name_acc,first_name_gen',
             name_case: 'nom',
             order:     'random'
           })

@@ -24,7 +24,9 @@ export default Model.extend({
 
   // падежы
   // винительный
-  first_name_acc: attr('string'),
+  firstNameAcc: attr('string'),
+  // родительный
+  firstNameGen: attr('string'),
   // ----- Relationships -----
 
 
