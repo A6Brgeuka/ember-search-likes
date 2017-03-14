@@ -1,0 +1,42 @@
+{{log model 'model'}}
+{{log usersFiltered.length 'usersFiltered'}}
+{{!log usersFiltered 'usersFiltered'}}
+{{!log maleUsers 'maleUsers'}}
+{{#sec-tion class="page-auth-friends-section _filters"}}
+  <div>
+    {{usersFiltered.length}}
+  </div>
+  <div>
+    у вас {{users.length}} друзей
+  </div>
+  <div class="page-auth-friends-section-filters">
+    <div>
+      Парни
+    </div>
+    {{x-toggle
+      value      = isMale
+      onToggle   = (action 'toggleMale')
+    }}
+    <div>
+      Девушки
+    </div>
+    {{x-toggle
+      value    = isFemale
+      onToggle = (action 'toggleFemale')
+    }}
+
+    <div class="page-auth-friends-section-filters _search">
+
+      {{input
+        class       = "page-auth-friends-section-filters-search-input"
+        value       = searchInput
+        placeholder = "Search..."
+      }}
+    </div>
+  </div>
+
+{{/sec-tion}}
+
+{{#sec-tion class="page-auth-friends-section _users"}}
+  {{friends-list users=usersFiltered}}
+{{/sec-tion}}
