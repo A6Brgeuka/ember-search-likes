@@ -11,7 +11,9 @@ router.map(function () {
   this.route('hello')
 
   this.route('authenticated', {path: '/'}, function () {
-    this.route('friends')
+    this.route('friends', function() {
+      this.route('friend', {path: ':user_id'})
+    })
   })
 })
 

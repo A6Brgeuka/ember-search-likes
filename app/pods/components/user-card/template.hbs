@@ -1,0 +1,12 @@
+<div class="userCard-section _text">
+  <div class="userCard-section-text-name">
+    {{link-to (concat user.firstName " " user.lastName) "authenticated.friends.friend" user.id}}
+  </div>
+  <div class="userCard-section-text-status">
+    online
+  </div>
+</div>
+
+<div class="userCard-section _image">
+  <img src="{{user.photo_100}}" alt="">
+</div>

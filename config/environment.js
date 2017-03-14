@@ -31,6 +31,12 @@ module.exports = function (environment) {
       routeIfAlreadyAuthenticated: 'authenticated',
     },
 
+    'ember-cli-toggle': {
+      includedThemes: ['default', 'ios'],
+      defaultTheme: 'ios',
+      defaultSize: 'small'
+    },
+
     'vk-settings': {
       appId:   process.env.VK_APP_ID      || 5922511,
       version: process.env.VK_API_VERSION || 5.62,

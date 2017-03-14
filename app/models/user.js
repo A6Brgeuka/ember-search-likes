@@ -1,6 +1,7 @@
 import Model from 'ember-data/model'
 import attr       from 'ember-data/attr'
 // import {hasMany, belongsTo}  from 'ember-data/relationships'
+import computed from 'ember-computed'
 
 
 export default Model.extend({
@@ -33,7 +34,16 @@ export default Model.extend({
 
 
   // ----- Computed properties -----
+  name: computed('firstName', 'lastName', function () {
+    const firstName = this.get('firstName')
+    const lastName  = this.get('lastName')
 
+    if (firstName && lastName) {
+      return `${lastName}, ${firstName}`
+    }
+
+    return 'unknown'
+  }),
 
 
   // ----- Overridden Methods -----
