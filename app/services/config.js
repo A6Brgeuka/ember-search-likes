@@ -3,7 +3,6 @@ import Environment from 'ember-search-likes/config/environment'
 const ENV = Environment.SystemENV
 import templateString from 'ember-computed-template-string'
 import computed from 'ember-computed'
-console.log(Environment)
 
 export default Service.extend({
 
@@ -26,7 +25,7 @@ export default Service.extend({
     "${vkBaseAuthUrl}client_id=${vkAppId}&display=${display}&redirect_uri=${redirectUri}&scope=${vkScope}&response_type=token&v=${vkApiVersion}"
   ),
   display:      'popup',
-  redirectUri:  ENV.ESL_GH_PAGES ? 'https://a6brgeuka.github.io/ember-search-likes/#/hello' : 'http://localhost:4200/#/hello',
+  redirectUri:  ENV.ESL_GH_PAGES ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello',
   vkApiVersion: 5.62,
   vkAppId:      5922511,
   vkScope:      'friends',
