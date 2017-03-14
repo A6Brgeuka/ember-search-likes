@@ -1,0 +1,73 @@
+.secTion {
+  padding-left: 2%;
+  padding-right: 2%; }
+
+.secTion-inner {
+  max-width: calc(960px - 4%);
+  margin-left: auto;
+  margin-right: auto; }
+
+.friendsList {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.userCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 5px 0;
+  width: 250px;
+  border: 1px solid #ddd;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: white;
+  border-radius: 2px; }
+
+.userCard-section._text {
+  padding: 5px 5px 0 5px; }
+
+.userCard-section-text-name {
+  margin-bottom: 5px; }
+
+.userCard-section-text-name-link {
+  font-weight: 600;
+  font-size: 15px;
+  color: #2a5885;
+  text-decoration: none; }
+
+.userCard-section-text-status {
+  color: #939393;
+  font-size: 11.5px; }
+
+.lastSeenPlatform._mobile {
+  width: 0;
+  height: 12px;
+  padding-left: 7px;
+  font-size: 13px;
+  background: url("/images/mobile.png") no-repeat 0 3px;
+  cursor: pointer;
+  display: inline; }
+
+.page-hello-button {
+  height: 40px; }
+
+.age-auth-friends-section._filters {
+  margin-bottom: 15px; }
+
+.page-auth-friends-section-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.page-auth-friends-friend-section._profileCover {
+  display: flex; }
+
+.navigation {
+  text-align: center; }
+
+body {
+  font-family: "Open Sans", helvetica, sans-serif;
+  background: #edeef0; }
+
+/*# sourceMappingURL=ember-search-likes.css.map */
