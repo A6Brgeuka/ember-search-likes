@@ -1,14 +1,12 @@
 /* jshint node: true */
 
 module.exports = function (environment) {
-  console.log(environment.ESL_GH_PAGES, 'environment.ESL_GH_PAGES')
-  console.log(environment.build, 'environment.build')
   var ENV = {
     modulePrefix:    'ember-search-likes',
     podModulePrefix: 'ember-search-likes/pods',
     environment:     environment,
     rootURL:         process.env.ESL_GH_PAGES ? '/ember-search-likes/' : '/',
-    locationType:    'auto',
+    locationType:    'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

@@ -28,7 +28,9 @@ export default Route.extend(UnauthenticatedRouteMixin, {
     this._super(...arguments)
 
     if (window.location.href.indexOf("access_token") !== -1) {
-      const listParams = getParams(window.location.href)
+      const accessTokenStartIndex = window.location.href.indexOf("access_token")
+      const url = window.location.href.slice(accessTokenStartIndex)
+      const listParams = getParams(url)
       this.get('attemptAuthTask').perform(listParams)
     }
   },

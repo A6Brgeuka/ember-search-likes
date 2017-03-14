@@ -1,9 +1,9 @@
 <div class="userCard-section _text">
   <div class="userCard-section-text-name">
-    {{link-to (concat user.firstName " " user.lastName) "authenticated.friends.friend" user.id}}
+    {{link-to (concat user.firstName " " user.lastName) "authenticated.friends.friend" user.id class="userCard-section-text-name-link"}}
   </div>
   <div class="userCard-section-text-status">
-    online
+    {{user-status-online user=user}}
   </div>
 </div>
 

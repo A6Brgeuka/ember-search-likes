@@ -13,6 +13,7 @@ export default Base.extend({
   },
 
   authenticate (args) {
+    debugger
     return RSVP.resolve(args)
   },
 })

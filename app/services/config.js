@@ -25,13 +25,8 @@ export default Service.extend({
   vkAuthUrl: templateString(
     "${vkBaseAuthUrl}client_id=${vkAppId}&display=${display}&redirect_uri=${redirectUri}&scope=${vkScope}&response_type=token&v=${vkApiVersion}"
   ),
-
   display:      'popup',
-  redirectUri:  computed(function () {
-    console.log("redirectUri");
-    console.log(Environment)
-    return ENV.ESL_GH_PAGES ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello'
-  }),
+  redirectUri:  ENV.ESL_GH_PAGES ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello',
   vkApiVersion: 5.62,
   vkAppId:      5922511,
   vkScope:      'friends',
