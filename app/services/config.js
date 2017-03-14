@@ -27,7 +27,7 @@ export default Service.extend({
   ),
 
   display:      'popup',
-  redirectUri:  ENV.ESL_GH_PAGES ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello',
+  redirectUri:  environment==='production' ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello',
   vkApiVersion: 5.62,
   vkAppId:      5922511,
   vkScope:      'friends',
