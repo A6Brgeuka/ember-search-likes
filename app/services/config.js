@@ -2,8 +2,8 @@ import Service from 'ember-service'
 import Environment from 'ember-search-likes/config/environment'
 const ENV = Environment.SystemENV
 import templateString from 'ember-computed-template-string'
-
-
+import computed from 'ember-computed'
+console.log(Environment)
 
 export default Service.extend({
 
@@ -27,7 +27,11 @@ export default Service.extend({
   ),
 
   display:      'popup',
-  redirectUri:  Environment.environment==='production' ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello',
+  redirectUri:  computed(function () {
+    console.log("redirectUri");
+    console.log(Environment)
+    return ENV.ESL_GH_PAGES ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello'
+  }),
   vkApiVersion: 5.62,
   vkAppId:      5922511,
   vkScope:      'friends',

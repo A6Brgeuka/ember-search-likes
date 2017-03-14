@@ -1,6 +1,8 @@
 /* jshint node: true */
 
 module.exports = function (environment) {
+  console.log(environment.ESL_GH_PAGES, 'environment.ESL_GH_PAGES')
+  console.log(environment.build, 'environment.build')
   var ENV = {
     modulePrefix:    'ember-search-likes',
     podModulePrefix: 'ember-search-likes/pods',
