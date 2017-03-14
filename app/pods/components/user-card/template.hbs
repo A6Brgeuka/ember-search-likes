@@ -3,10 +3,13 @@
     {{link-to (concat user.firstName " " user.lastName) "authenticated.friends.friend" user.id class="userCard-section-text-name-link"}}
   </div>
   <div class="userCard-section-text-status">
-    {{user-status-online user=user}}
+    {{user.onlineStatusText}}
+    {{#if user.lastSeenPlatform}}
+      {{last-seen-platform user=user}}
+    {{/if}}
   </div>
 </div>
 
-<div class="userCard-section _image">
+{{#link-to "authenticated.friends.friend" user.id class="userCard-section _image"}}
   <img src="{{user.photo_100}}" alt="">
-</div>
+{{/link-to}}

@@ -25,6 +25,18 @@ module.exports = function (environment) {
       // when it is created
     },
 
+    moment: {
+      // To cherry-pick specific locale support into your application.
+      // Full list of locales: https://github.com/moment/moment/tree/2.10.3/locale
+      includeLocales: ['ru'],
+    },
+
+    webFontConfig: {
+      google: {
+        families: ['Open Sans:300,400,600,700']
+      }
+    },
+
     'ember-simple-auth': {
       authenticationRoute:         'hello',
       routeAfterAuthentication:    'authenticated',
@@ -41,7 +53,8 @@ module.exports = function (environment) {
       appId:   process.env.VK_APP_ID      || 5922511,
       version: process.env.VK_API_VERSION || 5.62,
       scope:   process.env.VK_SCOPE       || 'friends'
-    }
+    },
+
     /*
     * +2 -> friends
     *

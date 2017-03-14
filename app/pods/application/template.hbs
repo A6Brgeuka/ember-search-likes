@@ -1,6 +1,17 @@
 {{#sec-tion}}
+  {{log session.isAuthenticated 'session.isAuthenticated'}}
+  {{#if session.isAuthenticated}}
+
+  {{/if}}
   <div class="navigation">
-    Здесь будет навигация
+    <div>
+      @logo@ Ember search likes
+    </div>
+
+    <div>
+      {{link-to "Список друзей" "authenticated.friends"}}
+    </div>
   </div>
+
 {{/sec-tion}}
 {{outlet}}
