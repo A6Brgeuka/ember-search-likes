@@ -1,6 +1,6 @@
 import Service from 'ember-service'
-// import Environment from 'ember-search-likes/config/environment'
-// const ENV = Environment.SystemENV
+import Environment from 'ember-search-likes/config/environment'
+const ENV = Environment.SystemENV
 import templateString from 'ember-computed-template-string'
 
 
@@ -27,7 +27,7 @@ export default Service.extend({
   ),
 
   display:      'popup',
-  redirectUri:  'http://localhost:4200/hello',
+  redirectUri:  ENV.ESL_GH_PAGES ? 'https://a6brgeuka.github.io/ember-search-likes/hello' : 'http://localhost:4200/hello',
   vkApiVersion: 5.62,
   vkAppId:      5922511,
   vkScope:      'friends',
